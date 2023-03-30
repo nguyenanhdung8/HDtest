@@ -1,0 +1,90 @@
+﻿@model List<HD.Test.Models.NhaXb>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="NhaXbs" asp-action="Index" method="get">
+
+    <p>
+
+       @* MaXb
+        <select name="svkhoa" asp-items="ViewBag.svkhoa">
+            <option name="svkhoa" value="">All</option>
+        </select>
+        Giang Vien:
+        <select name="magv" asp-items="ViewBag.magv">
+            <option name="magv" value="">All</option>
+        </select>*@
+
+        @* Mã SV: <input type="text" asp-for="masv" />*@
+        @*Mã sv : <select name="masv" asp-items="Model.Masv">
+        <option name="masv" value="">All</option>
+        </select>*@
+
+        @*Sinhvien : <select name="svname" asp-items="Model.Sinhvien">
+        <option name="svname" value="">All</option>
+
+
+        </select>*@
+
+
+        <input type="submit" value="Filter" />
+
+    </p>
+    <p>Total Student : @Model.Count() </p>
+
+
+
+
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].MaXb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Tenxb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Diachi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Ghichu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaXb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tenxb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ghichu)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MaXb">Edit</a> |
+                   @* <a asp-action="Details" asp-route-id="@item.MaXb">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.MaXb">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
